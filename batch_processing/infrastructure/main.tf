@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "google" {
-    project = "test-terraform-405913"
+    project = "master-pager-401705" #test-terraform-405913
     region = "asia-southeast2"
     credentials = file("../keys/test-terraform-sa.json")
 }
@@ -53,29 +53,34 @@ resource "google_compute_instance" "batch_processing_instance" {
   }
 
   metadata = {
-    ssh-keys = "riswanda_work:${file("../keys/terraform-key.pub")}"
+    ssh-keys = "myemail:${file("../keys/terraform-key.pub")}"
+    #ssh-keys = "#riswanda_work:${file("../keys/terraform-key.pub")}"
   }
 
   connection {
       type     = "ssh"
-      user     = "riswanda_work"
+      #user     = "riswanda_work"
+      user     = "myemail"
       host     = google_compute_address.batch_processing_address.address
       private_key = "${file("../keys/terraform-key")}"
     }
 
   provisioner "file" {
     source = "../docker-compose.yml"
-    destination = "/home/riswanda_work/docker-compose.yml"
+    destination = "/home/myemail/docker-compose.yml"
+    #destination = "/home/riswanda_work/docker-compose.yml"
   }
 
   provisioner "file" {
     source = "../dags/online_payment_log_Oct2023.py"
-    destination = "/home/riswanda_work/online_payment_log_Oct2023.py"
+    destination = "/home/myemail/online_payment_log_Oct2023.py"
+    #destination = "/home/riswanda_work/online_payment_log_Oct2023.py"
   }
 
   provisioner "file" {
     source = "../.env"
-    destination = "/home/riswanda_work/.env"
+    destination = "/home/myemail/.env"
+    #destination = "/home/riswanda_work/.env"
   }
 
   provisioner "remote-exec" {
