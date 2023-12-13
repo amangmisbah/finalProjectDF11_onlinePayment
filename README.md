@@ -1,7 +1,3 @@
-# Online Payment Fraud Analysis
-
-This is Final Data Engineering Project from Group 1 in Data Fellowship batch 11 held by IYKRA. <br>
-
 Group 1 : <br>
 Mentored by Miftahus Salam <br>
 1. Andi Aulia Syahnur
@@ -25,5 +21,3 @@ Lorem ipsum
 
 ## Conslusion
 Lorem ipsum
-
-
