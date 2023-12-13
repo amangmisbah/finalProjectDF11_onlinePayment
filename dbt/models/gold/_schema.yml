@@ -1,5 +1,9 @@
 version: 2
 
 models:
-  - name: balanced_transactions
-  - name: balance_qc
+  - name: customer_detail
+  - name: fraud_detail
+  - name: fraudster_status
+  - name: invalid_transactions
+  - name: valid_transactions
+  - name: victim_status
