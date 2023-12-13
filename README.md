@@ -1,15 +1,23 @@
-Welcome to your new dbt project!
+Group 1 : <br>
+Mentored by Miftahus Salam <br>
+1. Andi Aulia Syahnur
+2. Amang Misbah
+3. Denta Winardi Setiawan
+4. Mohammad Riswanda Alifarahman
+5. Renny Kurniasari
 
-### Using the starter project
 
-Try running the following commands:
-- dbt run
-- dbt test
+## Overview
+Lorem ipsum
 
+## Objective
+Lorem ipsum
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+## Data Pipeline
+Lorem ipsum
+
+## Dashboard
+Lorem ipsum
+
+## Conslusion
+Lorem ipsum
