@@ -12,24 +12,28 @@ dag = models.DAG(
     start_date=datetime(2023, 10, 1),
     tags=['Oct2023'],
 )
-load_transaction = SimpleHttpOperator(
+load_transaction_gcs_to_bq = SimpleHttpOperator(
                         task_id="load_transaction_gcs_to_bq",
                         http_conn_id='load_transaction',
                         method="GET",
                         dag=dag
                     )
-load_email = SimpleHttpOperator(
+load_email_gcs_to_bq = SimpleHttpOperator(
                         task_id="load_email_gcs_to_bq",
                         http_conn_id='load_email',
                         method="GET",
                         dag=dag
                     )
 
-load_fraud = SimpleHttpOperator(
+load_fraud_gcs_to_bq = SimpleHttpOperator(
                         task_id="load_fraud_gcs_to_bq",
                         http_conn_id='load_fraud',
                         method="GET",
                         dag=dag
                     )
+transform = BashOperator(
+        task_id="transform",
+        bash_command="dbt run --project-dir /opt/airflow/dbt/online_payment --profiles-dir /opt/airflow/dbt/online_payment",
+    )
 
-load_transaction >> load_email >> load_fraud
+load_transaction_gcs_to_bq >> load_email_gcs_to_bq >> load_fraud_gcs_to_bq >> transform
