@@ -1,9 +1,9 @@
 WITH source AS (
-    SELECT * FROM {{ ref('brz_transactions') }}
+    SELECT * FROM {{ ref('int_fraudDetail') }}
 ),
 
-fraud_detail AS (
-    SELECT * FROM {{ ref('svr_fraud_detail') }}
+customer_detail_source AS (
+    SELECT * FROM {{ ref('int_customerDetail') }}
 ),
 
 frequent_fraudsters AS (
@@ -23,7 +23,7 @@ frequent_fraudsters AS (
 fraudulent_transactions AS (
     SELECT DISTINCT
         nameDest
-    FROM fraud_detail
+    FROM source
 ),
 
 customer_detail AS (
@@ -33,7 +33,7 @@ customer_detail AS (
         recencyDays,
         frequency,
         monetaryValue
-    FROM {{ ref('svr_customer_detail') }}
+    FROM customer_detail_source
 )
 
 SELECT 
