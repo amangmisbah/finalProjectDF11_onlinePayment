@@ -1,6 +1,6 @@
 WITH source AS (
   SELECT *
-  FROM {{ ref('svr_imbalance_transactions') }}
+  FROM {{ ref('int_imbalanceTransactions') }}
 ),
 
 balancing_transaction AS (

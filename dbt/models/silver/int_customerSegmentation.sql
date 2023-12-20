@@ -1,6 +1,6 @@
 WITH source AS (
   SELECT *
-  FROM {{ ref('svr_customer_detail') }}
+  FROM {{ ref('int_customerDetail') }}
 ),
 
 percentiles AS (

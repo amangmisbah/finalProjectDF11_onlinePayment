@@ -1,5 +1,5 @@
 WITH source AS (
-    SELECT * FROM {{ ref('brz_transactions') }}
+    SELECT * FROM {{ ref('stg_transactions') }}
 ),
 
 fraudulent_transactions AS (

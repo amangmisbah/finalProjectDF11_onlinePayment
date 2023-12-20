@@ -1,13 +1,8 @@
 version: 2
 
 models:
-  - name: svr_balancing_transactions
-  - name: svr_customer_detail
-  - name: svr_customer_segmentation
-  - name: svr_fraud_detail
-  - name: svr_fraudster_receive_nonfraud_trx
-  - name: svr_fraudster_send_nonfraud_trx
-  - name: svr_imbalance_transactions
-  - name: svr_refund_detail
-  - name: svr_victim_trx_after_fraud
-  - name: svr_victim_trx_before_fraud
+  - name: int_imbalanceTransactions
+  - name: int_balancingTransactions
+  - name: int_customerSegmentation
+  - name: int_refundDetail
+  - name: int_fraudDetail

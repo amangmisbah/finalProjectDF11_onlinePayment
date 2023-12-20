@@ -1,5 +1,5 @@
 WITH source AS (
-    SELECT * FROM {{ ref('brz_transactions') }}
+    SELECT * FROM {{ ref('stg_transactions') }}
 ),
 
 od_customer_trx AS (
@@ -86,11 +86,11 @@ suspect_activity AS (
     SELECT
         DISTINCT nameOrig AS customerID
     FROM source
-    WHERE nameDest IN (SELECT customerID FROM {{ ref('svr_fraudster_receive_nonfraud_trx') }}) AND isFraud = False
+    WHERE nameDest IN (SELECT customerID FROM {{ ref('int_fraudsterReceiveNonfraudTrx') }}) AND isFraud = False
     UNION DISTINCT
     SELECT
         DISTINCT customerID
-    FROM {{ ref('svr_fraudster_send_nonfraud_trx') }}
+    FROM {{ ref('int_fraudsterSendNonfraudTrx') }}
 ),
 
 victim_activity AS (
