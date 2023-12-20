@@ -4,20 +4,8 @@ sources:
     database: final-project-404104
     schema: online_payment
     tables:
-      - name: online_payment_1
-        identifier: online_payment_1
-      - name: online_payment_2
-        identifier: online_payment_2
-      - name: online_payment_3
-        identifier: online_payment_3
-      - name: online_payment_4
-        identifier: online_payment_4
-      - name: online_payment_5
-        identifier: online_payment_5
-      - name: online_payment_6
-        identifier: online_payment_6
-      - name: online_payment_7
-        identifier: online_payment_7
+      - name: transaction
+        identifier: transaction
       - name: fraud_confirmation
         identifier: fraud_confirmation
       - name: email_confirmation
