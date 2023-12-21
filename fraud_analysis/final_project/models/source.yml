@@ -1,7 +1,0 @@
-version: 2
-
-sources:
-  - name: final_project
-    tables:
-      - name: all_data
-      - name: fraud
