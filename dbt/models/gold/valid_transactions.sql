@@ -1,5 +1,5 @@
 WITH source AS (
-  SELECT * FROM {{ ref('svr_balancing_transactions') }}
+  SELECT * FROM {{ ref('int_balancingTransactions') }}
 )
 
 SELECT
@@ -11,7 +11,7 @@ SELECT
         WHEN EXTRACT(HOUR FROM transactionDatetime) >= 12 AND EXTRACT(HOUR FROM transactionDatetime) < 17 THEN 'Afternoon'
         WHEN EXTRACT(HOUR FROM transactionDatetime) >= 17 AND EXTRACT(HOUR FROM transactionDatetime) < 21 THEN 'Evening'
     END AS timePeriod,
-    FORMAT_DATE('%A', transactionDatetime) AS day,
+    FORMAT_DATE('%A', transactionDatetime) AS dayOfWeek,
     CASE 
         WHEN EXTRACT(DAY FROM transactionDatetime) <= 7 THEN 'Week 1'
         WHEN EXTRACT(DAY FROM transactionDatetime) <= 14 THEN 'Week 2'

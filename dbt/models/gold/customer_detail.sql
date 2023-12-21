@@ -1,9 +1,9 @@
 WITH customer_detail AS (
-  SELECT * FROM {{ ref('svr_customer_detail') }}
+  SELECT * FROM {{ ref('int_customerDetail') }}
 ),
 
 customer_segmentation AS (
-  SELECT * FROM {{ ref('svr_customer_segmentation') }}
+  SELECT * FROM {{ ref('int_customerSegmentation') }}
 )
 
 SELECT

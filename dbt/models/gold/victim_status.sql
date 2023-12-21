@@ -1,9 +1,13 @@
 WITH source AS (
-    SELECT * FROM {{ ref('brz_fraud_confirmation') }}
+    SELECT * FROM {{ ref('int_fraudDetail') }}
 ),
 
 victim_trx_after_fraud AS (
-    SELECT * FROM {{ ref('svr_victim_trx_after_fraud') }}
+    SELECT * FROM {{ ref('int_victimTrxAfterFraud') }}
+),
+
+customer_detail_source AS (
+    SELECT * FROM {{ ref('int_customerDetail') }}
 ),
 
 fraudulent_accounts AS (
@@ -21,10 +25,11 @@ frequent_victim AS (
 customer_detail AS (
     SELECT
         DISTINCT customerID,
+        customerCategory,
         recencyDays,
         frequency,
         monetaryValue
-    FROM {{ ref('svr_customer_detail') }}
+    FROM customer_detail_source
 )
 
 SELECT 
@@ -33,6 +38,7 @@ SELECT
         WHEN fv.customerID IS NOT NULL THEN 'Active'
         ELSE 'Inactive'
     END AS postFraudActivity,
+    customerCategory,
     cd.recencyDays,
     cd.frequency,
     cd.monetaryValue
