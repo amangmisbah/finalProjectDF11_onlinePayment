@@ -2,8 +2,233 @@ version: 2
 
 models:
   - name: customer_detail
+    columns:
+      - name: customerID
+        tests:
+          - not_null
+      - name: customerCategory
+        tests:
+          - not_null
+      - name: customerType
+        tests:
+          - not_null
+      - name: customerStatus
+        tests:
+          - not_null
+      - name: recencyDays
+        tests:
+          - not_null
+      - name: frequency
+        tests:
+          - not_null
+      - name: monetaryValue
+        tests:
+          - not_null
   - name: fraud_detail
+    columns:
+      - name: transactionID
+        tests:
+          - not_null
+      - name: transactionDatetime
+        tests:
+          - not_null
+      - name: type
+        tests:
+          - not_null
+      - name: amount
+        tests:
+          - not_null
+      - name: nameOrig
+        tests:
+          - not_null
+      - name: oldBalanceOrig
+        tests:
+          - not_null
+      - name: newBalanceOrig
+        tests:
+          - not_null
+      - name: nameDest
+        tests:
+          - not_null
+      - name: oldBalanceDest
+        tests:
+          - not_null
+      - name: newBalanceDest
+        tests:
+          - not_null
+      - name: isFraud
+        tests:
+          - not_null
+      - name: isFlaggedFraud
+        tests:
+          - not_null
+      - name: isConfirmed
+        tests:
+          - not_null
+      - name: isTrueFraud
+        tests:
+          - not_null
+      - name: isRefunded
+        tests:
+          - not_null
+      - name: valueRange
+        tests:
+          - not_null
   - name: fraudster_status
+    columns:
+      - name: customerID
+        tests:
+          - not_null
+      - name: fraudsterCategory
+        tests:
+          - not_null
+      - name: customerCategory
+        tests:
+          - not_null
+      - name: recencyDays
+        tests:
+          - not_null
+      - name: frequency
+        tests:
+          - not_null
+      - name: monetaryValue
+        tests:
+          - not_null
   - name: invalid_transactions
+    columns:
+      - name: transactionID
+        tests:
+          - not_null
+      - name: transactionDatetime
+        tests:
+          - not_null
+      - name: timePeriod
+        tests:
+          - not_null
+      - name: dayOfWeek
+        tests:
+          - not_null
+      - name: weekOfMonth
+        tests:
+          - not_null
+      - name: type
+        tests:
+          - not_null
+      - name: amount
+        tests:
+          - not_null
+      - name: nameOrig
+        tests:
+          - not_null
+      - name: oldBalanceOrig
+        tests:
+          - not_null
+      - name: newBalanceOrig
+        tests:
+          - not_null
+      - name: newBalanceOrigValid
+        tests:
+          - not_null
+      - name: nameDest
+        tests:
+          - not_null
+      - name: oldBalanceDest
+        tests:
+          - not_null
+      - name: newBalanceDest
+        tests:
+          - not_null
+      - name: newBalanceDestValid
+        tests:
+          - not_null
+      - name: isFraud
+        tests:
+          - not_null
+      - name: isFlaggedFraud
+        tests:
+          - not_null
+      - name: isValid
+        tests:
+          - not_null
+      - name: isValidUpdate
+        tests:
+          - not_null
   - name: valid_transactions
+    columns:
+      - name: transactionID
+        tests:
+          - not_null
+      - name: transactionDatetime
+        tests:
+          - not_null
+      - name: timePeriod
+        tests:
+          - not_null
+      - name: dayOfWeek
+        tests:
+          - not_null
+      - name: weekOfMonth
+        tests:
+          - not_null
+      - name: type
+        tests:
+          - not_null
+      - name: amount
+        tests:
+          - not_null
+      - name: nameOrig
+        tests:
+          - not_null
+      - name: oldBalanceOrig
+        tests:
+          - not_null
+      - name: newBalanceOrig
+        tests:
+          - not_null
+      - name: newBalanceOrigValid
+        tests:
+          - not_null
+      - name: nameDest
+        tests:
+          - not_null
+      - name: oldBalanceDest
+        tests:
+          - not_null
+      - name: newBalanceDest
+        tests:
+          - not_null
+      - name: newBalanceDestValid
+        tests:
+          - not_null
+      - name: isFraud
+        tests:
+          - not_null
+      - name: isFlaggedFraud
+        tests:
+          - not_null
+      - name: isValid
+        tests:
+          - not_null
+      - name: isValidUpdate
+        tests:
+          - not_null
   - name: victim_status
+    columns:
+      - name: customerID
+        tests:
+          - not_null
+      - name: postFraudActivity
+        tests:
+          - not_null
+      - name: customerCategory
+        tests:
+          - not_null
+      - name: recencyDays
+        tests:
+          - not_null
+      - name: frequency
+        tests:
+          - not_null
+      - name: monetaryValue
+        tests:
+          - not_null

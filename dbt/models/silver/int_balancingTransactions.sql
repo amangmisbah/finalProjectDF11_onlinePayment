@@ -1,3 +1,14 @@
+{{
+    config(
+        partition_by={
+            'field': 'transactionDatetime',
+            'data_type': 'timestamp',
+            'granularity': 'day'
+        },
+        cluster_by = 'isValid'
+    )
+}}
+
 WITH source AS (
   SELECT *
   FROM {{ ref('int_imbalanceTransactions') }}

@@ -2,7 +2,274 @@ version: 2
 
 models:
   - name: int_imbalanceTransactions
+    columns:
+      - name: transactionID
+        tests:
+          - not_null
+      - name: transactionDatetime
+        tests:
+          - not_null
+      - name: type
+        tests:
+          - not_null
+      - name: amount
+        tests:
+          - not_null
+      - name: nameOrig
+        tests:
+          - not_null
+      - name: oldBalanceOrig
+        tests:
+          - not_null
+      - name: newBalanceOrig
+        tests:
+          - not_null
+      - name: nameDest
+        tests:
+          - not_null
+      - name: oldBalanceDest
+        tests:
+          - not_null
+      - name: newBalanceDest
+        tests:
+          - not_null
+      - name: isFraud
+        tests:
+          - not_null
+      - name: isFlaggedFraud
+        tests:
+          - not_null
+      - name: isValid
+        tests:
+          - not_null
   - name: int_balancingTransactions
+    columns:
+      - name: transactionID
+        tests:
+          - not_null
+      - name: transactionDatetime
+        tests:
+          - not_null
+      - name: type
+        tests:
+          - not_null
+      - name: amount
+        tests:
+          - not_null
+      - name: nameOrig
+        tests:
+          - not_null
+      - name: oldBalanceOrig
+        tests:
+          - not_null
+      - name: newBalanceOrig
+        tests:
+          - not_null
+      - name: newBalanceOrigValid
+        tests:
+          - not_null
+      - name: nameDest
+        tests:
+          - not_null
+      - name: oldBalanceDest
+        tests:
+          - not_null
+      - name: newBalanceDest
+        tests:
+          - not_null
+      - name: newBalanceDestValid
+        tests:
+          - not_null
+      - name: isFraud
+        tests:
+          - not_null
+      - name: isFlaggedFraud
+        tests:
+          - not_null
+      - name: isValid
+        tests:
+          - not_null
+      - name: isValidUpdate
+        tests:
+          - not_null
   - name: int_customerSegmentation
+    columns:
+      - name: customerID
+        tests:
+          - not_null
+      - name: recencySegment
+        tests:
+          - not_null
+      - name: frequencySegment
+        tests:
+          - not_null
+      - name: monetarySegment
+        tests:
+          - not_null
+      - name: rfmScore
+        tests:
+          - not_null
+      - name: customerType
+        tests:
+          - not_null
   - name: int_refundDetail
+    columns:
+      - name: transactionID
+        tests:
+          - not_null
+      - name: transactionDatetime
+        tests:
+          - not_null
+      - name: type
+        tests:
+          - not_null
+      - name: isRefunded
+        tests:
+          - not_null
+      - name: refundedAmount
+        tests:
+          - not_null
+      - name: oldBalanceOrigSet
+        tests:
+          - not_null
+      - name: newBalanceOrigSet
+        tests:
+          - not_null
+      - name: oldBalanceDestSet
+        tests:
+          - not_null
+      - name: newBalanceDestSet
+        tests:
+          - not_null
   - name: int_fraudDetail
+    columns:
+      - name: transactionID
+        tests:
+          - not_null
+      - name: transactionDatetime
+        tests:
+          - not_null
+      - name: type
+        tests:
+          - not_null
+      - name: amount
+        tests:
+          - not_null
+      - name: nameOrig
+        tests:
+          - not_null
+      - name: oldBalanceOrig
+        tests:
+          - not_null
+      - name: newBalanceOrig
+        tests:
+          - not_null
+      - name: nameDest
+        tests:
+          - not_null
+      - name: oldBalanceDest
+        tests:
+          - not_null
+      - name: newBalanceDest
+        tests:
+          - not_null
+      - name: isFraud
+        tests:
+          - not_null
+      - name: isFlaggedFraud
+        tests:
+          - not_null
+      - name: isConfirmed
+        tests:
+          - not_null
+      - name: isTrueFraud
+        tests:
+          - not_null
+  - name: int_victimTrxAfterFraud
+    columns:
+      - name: customerID
+        tests:
+          - not_null
+      - name: transactionID
+        tests:
+          - not_null
+      - name: transactionDatetime
+        tests:
+          - not_null
+      - name: isFraud
+        tests:
+          - not_null
+  - name: int_victimTrxBeforeFraud
+    columns:
+      - name: customerID
+        tests:
+          - not_null
+      - name: transactionID
+        tests:
+          - not_null
+      - name: transactionDatetime
+        tests:
+          - not_null
+      - name: isFraud
+        tests:
+          - not_null
+  - name: int_fraudsterReceiveNonfraudTrx
+    columns:
+      - name: customerID
+        tests:
+          - not_null
+      - name: transactionID
+        tests:
+          - not_null
+      - name: transactionDatetime
+        tests:
+          - not_null
+      - name: nonFraudulentTransactionCount
+        tests:
+          - not_null
+  - name: int_fraudsterSendNonfraudTrx
+    columns:
+      - name: customerID
+        tests:
+          - not_null
+      - name: transactionID
+        tests:
+          - not_null
+      - name: transactionDatetime
+        tests:
+          - not_null
+  - name: int_customerDetail
+    columns:
+      - name: customerID
+        tests:
+          - not_null
+      - name: isOrig
+        tests:
+          - not_null
+      - name: isDest
+        tests:
+          - not_null
+      - name: customerCategory
+        tests:
+          - not_null
+      - name: recencyDays
+        tests:
+          - not_null
+      - name: frequency
+        tests:
+          - not_null
+      - name: monetaryValue
+        tests:
+          - not_null
+      - name: isFraudAccount
+        tests:
+          - not_null
+      - name: isSuspectAccount
+        tests:
+          - not_null
+      - name: isVictimAccount
+        tests:
+          - not_null
+      - name: customerStatus
+        tests:
+          - not_null
