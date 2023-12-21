@@ -1,2 +1,2 @@
-SELECT * FROM {{ source('online_payment', 'email_confirmation') }}
+SELECT * FROM {{ source('final_project', 'email') }}
 ORDER BY idTransaction

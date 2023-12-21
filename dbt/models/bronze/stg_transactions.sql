@@ -1,8 +1,6 @@
 WITH source AS (
 
-    SELECT
-        *
-    FROM {{ source('online_payment', 'transaction') }}
+    select * from {{ source('final_project', 'transaction') }}
 
 )
 

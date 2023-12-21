@@ -1,16 +1,14 @@
 online_payment:
   outputs:
     dev:
-      dataset: online_payment
+      dataset: final_project_df11_group_1
       job_execution_timeout_seconds: 300
       job_retries: 1
-      keyfile: /Users/rennykurniasari/Desktop/DF11/final_project/dbt/final-project-404104-e6e579c98e82.json
+      keyfile: brave-sonar-400508-1b40a9925807.json
       location: US
       method: service-account
       priority: interactive
-      project: final-project-404104
+      project: brave-sonar-400508
       threads: 3
       type: bigquery
-      dataproc_region: us-central1
-      gcs_bucket: df11_online_payment
   target: dev

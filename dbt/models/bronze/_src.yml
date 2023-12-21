@@ -1,12 +1,12 @@
 version: 2
 sources:
-  - name: online_payment
-    database: final-project-404104
-    schema: online_payment
+  - name: final_project
+    database: brave-sonar-400508
+    schema: final_project_df11_group_1
     tables:
       - name: transaction
         identifier: transaction
-      - name: fraud_confirmation
-        identifier: fraud_confirmation
-      - name: email_confirmation
-        identifier: email_confirmation
+      - name: fraud
+        identifier: fraud
+      - name: email
+        identifier: email
