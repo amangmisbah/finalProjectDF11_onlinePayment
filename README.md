@@ -22,25 +22,25 @@ Creating a data pipeline to <b> advance business goals </b> by delivering <b> hi
 2. Create visualization dashboard to obtain meaningful insight for fraud and customer behaviour analysis
 
 ## Data Architecture
-Lorem ipsum
+![](assets/data_architecture.png)
 
 ## Data Warehouse
 
 ### Data Modeling
-
+![](assets/data_modeling.png)
 ### Data Lineage
-
+![](assets/data_lineage.png)
 ## Dashboard
 All dashboard can access in this [link](https://lookerstudio.google.com/u/0/reporting/33c12988-12d0-49d8-a51f-ac7aeb5618d2)
 
 ### Transaction Analysis
-
+![](assets/general_dashboard.png)
 ### Customer and Transaction Type Analysis 
-
+![](assets/customer_dashboard.png)
 ### Fraud Analysis 
-
+![](assets/fraud_dashboard.png)
 ### Invalid Transaction Analysis
-
+![](assets/invalid_transaction_dashboard.png)
 ## Project Instruction
 
 1. Clone this Project
