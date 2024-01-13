@@ -16,3 +16,6 @@ batch_processing/infrastructure/.terraform.lock.hcl
 batch_processing/infrastructure/.terraform/
 batch_processing/dags/__pycache__
 batch_processing/logs/
+
+dbt/logs/
+dbt/target/

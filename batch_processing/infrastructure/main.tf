@@ -8,90 +8,89 @@ terraform {
 }
 
 provider "google" {
-    project = "master-pager-401705" #test-terraform-405913
-    region = "asia-southeast2"
+    project     = "master-pager-401705"
+    region      = "asia-southeast2"
     credentials = file("../keys/test-terraform-sa.json")
 }
 
 resource "google_compute_firewall" "airflow_firewall" {
-  name    = "airflow-1"
-  network = "default"
+    name    = "airflow-1"
+    network = var.network
 
-  allow {
-    protocol = "tcp"
-    ports    = ["8080"]
-  }
+    allow {
+        protocol = "tcp"
+        ports    = ["8080"]
+    }
 
-  source_ranges = ["0.0.0.0/0"]  # Bisa disesuaikan dengan alamat IP yang diizinkan
-  target_tags = ["airflow-1"]
+    source_ranges = ["0.0.0.0/0"]
+    target_tags   = ["airflow-1"]
 }
 
 resource "google_compute_address" "batch_processing_address" {
-  name   = "batch-processing"
-  region = "asia-southeast2"  # Ganti dengan region yang sesuai
+    name   = "batch-processing"
+    region = "asia-southeast2"
 }
 
 resource "google_compute_instance" "batch_processing_instance" {
-  name         = "batch-processing"
-  machine_type = "e2-standard-4"
-  zone         = "asia-southeast2-a"
+    name         = "batch-processing"
+    machine_type = var.vm_type
+    zone         = "asia-southeast2-a"
 
-  tags = ["airflow-1"]
+    tags = ["airflow-1"]
 
-
-  boot_disk {
-    initialize_params {
-      image = "debian-cloud/debian-11"
-    }
-  }
-
-  network_interface {
-    network = "default"
-    access_config {
-      nat_ip = google_compute_address.batch_processing_address.address
-    }
-  }
-
-  metadata = {
-    ssh-keys = "myemail:${file("../keys/terraform-key.pub")}"
-    #ssh-keys = "#riswanda_work:${file("../keys/terraform-key.pub")}"
-  }
-
-  connection {
-      type     = "ssh"
-      #user     = "riswanda_work"
-      user     = "myemail"
-      host     = google_compute_address.batch_processing_address.address
-      private_key = "${file("../keys/terraform-key")}"
+    boot_disk {
+        initialize_params {
+            image = "debian-cloud/debian-11"
+        }
     }
 
-  provisioner "file" {
-    source = "../docker-compose.yml"
-    destination = "/home/myemail/docker-compose.yml"
-    #destination = "/home/riswanda_work/docker-compose.yml"
-  }
+    network_interface {
+        network = var.network
+        access_config {
+            nat_ip = google_compute_address.batch_processing_address.address
+        }
+    }
 
-  provisioner "file" {
-    source = "../dags/online_payment_log_Oct2023.py"
-    destination = "/home/myemail/online_payment_log_Oct2023.py"
-    #destination = "/home/riswanda_work/online_payment_log_Oct2023.py"
-  }
+    metadata = {
+        ssh-keys = "myemail:${file("../keys/terraform-key.pub")}"
+    }
 
-  provisioner "file" {
-    source = "../.env"
-    destination = "/home/myemail/.env"
-    #destination = "/home/riswanda_work/.env"
-  }
+    connection {
+        type        = "ssh"
+        user        = "myemail"
+        host        = google_compute_address.batch_processing_address.address
+        private_key = "${file(var.private_key_vm)}"
+    }
 
-  provisioner "remote-exec" {
-    inline = [
-      "sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3-pip",
-      "curl -fsSL https://get.docker.com -o get-docker.sh",
-      "sudo sh get-docker.sh",
-      "pip3 install dbt-bigquery",
-      "mkdir dags",
-      "mv online_payment_log_Oct2023.py dags"
-    ]
-  }
+    provisioner "file" {
+        source      = "../docker-compose.yml"
+        destination = "/home/myemail/docker-compose.yml"
+    }
 
+    provisioner "file" {
+        source      = "../dags/online_payment_log_Oct2023.py"
+        destination = "/home/myemail/online_payment_log_Oct2023.py"
+    }
+
+    provisioner "file" {
+        source      = "../.env"
+        destination = "/home/myemail/.env"
+    }
+
+    provisioner "remote-exec" {
+        inline = [
+            "sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3-pip",
+            "curl -fsSL https://get.docker.com -o get-docker.sh",
+            "sudo sh get-docker.sh",
+            "pip3 install dbt-bigquery",
+            "mkdir dags",
+            "mv online_payment_log_Oct2023.py dags"
+        ]
+    }
+}
+
+resource "google_bigquery_dataset" "raw_table" {
+    dataset_id = "online_payment"
+    project    = var.project
+    location   = "US"
 }

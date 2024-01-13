@@ -1,0 +1,81 @@
+version: 2
+
+models:
+  - name: stg_transactions
+    columns:
+      - name: transactionID
+        tests:
+          - not_null
+      - name: transactionDatetime
+        tests:
+          - not_null
+      - name: type
+        tests:
+          - not_null
+      - name: amount
+        tests:
+          - not_null
+      - name: nameOrig
+        tests:
+          - not_null
+      - name: oldBalanceOrig
+        tests:
+          - not_null
+      - name: newBalanceOrig
+        tests:
+          - not_null
+      - name: nameDest
+        tests:
+          - not_null
+      - name: oldBalanceDest
+        tests:
+          - not_null
+      - name: newBalanceDest
+        tests:
+          - not_null
+      - name: isFraud
+        tests:
+          - not_null
+      - name: isFlaggedFraud
+        tests:
+          - not_null
+  - name: stg_fraudConfirmation
+    columns:
+      - name: transactionID
+        tests:
+          - not_null
+      - name: isFraud
+        tests:
+          - not_null
+      - name: isFlaggedFraud
+        tests:
+          - not_null
+      - name: isConfirmed
+        tests:
+          - not_null
+      - name: isTrueFraud
+        tests:
+          - not_null
+      - name: isRefunded
+        tests:
+          - not_null
+      - name: oldBalanceOrigSet
+        tests:
+          - not_null
+      - name: newBalanceOrigSet
+        tests:
+          - not_null
+      - name: oldBalanceDestSet
+        tests:
+          - not_null
+      - name: newBalanceDestSet
+        tests:
+          - not_null
+  - name: stg_emailConfirmation
+    columns:
+      - name: idTransaction
+        tests:
+          - not_null
+      - name: isSendEmail
+        tests:
+          - not_null
